@@ -21,7 +21,7 @@ import HTML
                 }
                 
                 #"""
-                It is inhumane, in \#(try! String(html: link.render())), to force people who have a genuine medical need for coffee to wait in line behind people who apparently view it as some kind of recreational activity.
+                It is inhumane, in \#(try! String(link)), to force people who have a genuine medical need for coffee to wait in line behind people who apparently view it as some kind of recreational activity.
                 """#
             }
         }
