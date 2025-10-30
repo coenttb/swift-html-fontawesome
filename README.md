@@ -7,7 +7,7 @@ Type-safe FontAwesome 6 icons for Swift HTML DSL with compile-time safety and mu
 
 ## Overview
 
-**swift-html-fontawesome** provides FontAwesome 6 icon support for the swift-html ecosystem. The package offers type-safe icon rendering, multiple loading strategies (Kit, CDN, self-hosted), and comprehensive style support including all free and Pro icon styles.
+**swift-html-fontawesome** provides FontAwesome 6 icon support for the swift-html ecosystem. The package offers type-safe icon rendering, multiple loading strategies (Kit, CDN, self-hosted), and complete style support for all free and Pro icon styles.
 
 ## Features
 
