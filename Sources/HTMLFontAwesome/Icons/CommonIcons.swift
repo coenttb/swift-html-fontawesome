@@ -115,6 +115,7 @@ public extension FontAwesomeIcon {
     static let circleCheck = FontAwesomeIcon("circle-check")
     static let circleXmark = FontAwesomeIcon("circle-xmark")
     static let circleInfo = FontAwesomeIcon("circle-info")
+    static let info = FontAwesomeIcon("circle-info")
     static let circleQuestion = FontAwesomeIcon("circle-question")
     static let circleExclamation = FontAwesomeIcon("circle-exclamation")
     static let exclamationCircle = FontAwesomeIcon("circle-exclamation")

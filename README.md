@@ -1,38 +1,24 @@
 # swift-html-fontawesome
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0">
-  <img src="https://img.shields.io/badge/Platforms-macOS%20|%20iOS%20|%20tvOS%20|%20watchOS%20|%20Linux-lightgray.svg" alt="Platforms">
-  <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
-</p>
+[![CI](https://github.com/coenttb/swift-html-fontawesome/workflows/CI/badge.svg)](https://github.com/coenttb/swift-html-fontawesome/actions/workflows/ci.yml)
+![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
-<p align="center">
-  <strong>Type-safe FontAwesome icons for swift-html</strong><br>
-  Add beautiful, scalable icons to your Swift HTML projects with compile-time safety
-</p>
+Type-safe FontAwesome 6 icons for Swift HTML DSL with compile-time safety and multiple loading strategies.
 
 ## Overview
 
-**swift-html-fontawesome** brings the power of FontAwesome 6 to Swift's HTML DSL ecosystem. With type-safe icons, multiple loading strategies, and comprehensive style support, you can add professional icons to your web projects with confidence.
+**swift-html-fontawesome** provides FontAwesome 6 icon support for the swift-html ecosystem. The package offers type-safe icon rendering, multiple loading strategies (Kit, CDN, self-hosted), and comprehensive style support including all free and Pro icon styles.
 
-```swift
-import HTML
-import HTMLFontAwesome
+## Features
 
-// Simple icon usage
-FontAwesomeIcon("check")
-    .size(.x2)
-    .animate(.bounce)
-
-// Or use pre-defined icons
-FontAwesomeIcon.heart
-    .style(.solid)
-    .color(.red)
-
-// Load FontAwesome (choose your strategy)
-FontAwesomeKit(kitId: "your-kit-id")  // Recommended for Pro
-FontAwesomeCDN(version: "6.5.1")      // Free icons via CDN
-```
+- Type-safe icon API with compile-time validation
+- Multiple loading strategies: Kit (Pro), CDN (free), and self-hosted
+- Support for all FontAwesome styles: solid, regular, light, thin, duotone, brands
+- Fluent API for icon configuration (size, animation, rotation, flip)
+- Pre-defined static properties for 300+ common icons
+- Built-in components: buttons, lists, labels, and icon stacks
+- Full accessibility support with ARIA attributes
+- Direct integration with swift-html DSL
 
 ## Installation
 
@@ -44,7 +30,7 @@ dependencies: [
 ]
 ```
 
-Then add the product to your target:
+Add the product to your target:
 
 ```swift
 .target(
@@ -57,58 +43,62 @@ Then add the product to your target:
 
 ## Quick Start
 
-### 1. Load FontAwesome
+### Loading FontAwesome
 
-Choose your loading strategy based on your needs:
+Choose a loading strategy based on your needs:
 
 ```swift
-// Option A: FontAwesome Kit (Recommended)
-FontAwesomeKit(kitId: "abc123def")
+import HTML
+import HTMLFontAwesome
 
-// Option B: CDN for free icons
+// Option 1: FontAwesome Kit (Recommended for Pro)
+FontAwesomeKit(kitId: "your-kit-id")
+
+// Option 2: CDN (Free icons)
 FontAwesomeCDN(version: "6.5.1")
 
-// Option C: Self-hosted files
+// Option 3: Self-hosted
 FontAwesomeSelfHosted(
     cssPath: "/assets/fontawesome/css/all.min.css",
     jsPath: "/assets/fontawesome/js/all.min.js"
 )
 ```
 
-### 2. Use Icons
+### Basic Icon Usage
 
 ```swift
-// Basic usage
-FontAwesomeIcon("user")
+// Simple icon
+FontAwesomeIcon("check")
 
-// With modifiers
+// With fluent API
 FontAwesomeIcon("spinner")
     .animate(.spin)
     .size(.large)
     .ariaLabel("Loading...")
 
-// Pre-defined common icons
+// Pre-defined icons
 FontAwesomeIcon.check
 FontAwesomeIcon.github
 FontAwesomeIcon.envelope
 ```
 
-## Key Features
+## Usage Examples
 
-### 🎨 All FontAwesome Styles
+### Icon Styles
 
 ```swift
+// Free styles
 FontAwesomeIcon("house", style: .solid)     // fas
 FontAwesomeIcon("house", style: .regular)   // far
 FontAwesomeIcon("github", style: .brands)   // fab
 
-// Pro styles
+// Pro styles (requires Kit)
 FontAwesomeIcon("house", style: .light)     // fal
 FontAwesomeIcon("house", style: .thin)      // fat
 FontAwesomeIcon("house", style: .duotone)   // fad
 ```
 
-### ⚡ Animations & Transforms
+### Animations and Transforms
 
 ```swift
 // Animations
@@ -116,21 +106,44 @@ FontAwesomeIcon.bell.animate(.shake)
 FontAwesomeIcon.heart.animate(.beat)
 FontAwesomeIcon.cog.animate(.spin)
 
-// Rotations & Flips
-FontAwesomeIcon.arrow.rotate(.rotate90)
-FontAwesomeIcon.shield.flip(.horizontal)
+// Rotations
+FontAwesomeIcon("arrow-right").rotate(.rotate90)
+
+// Flips
+FontAwesomeIcon("shield").flip(.horizontal)
 ```
 
-### 🧩 Components
+### Size Options
+
+```swift
+FontAwesomeIcon("star", size: .extraSmall)  // fa-xs
+FontAwesomeIcon("star", size: .small)       // fa-sm
+FontAwesomeIcon("star", size: .large)       // fa-lg
+FontAwesomeIcon("star", size: .extraLarge)  // fa-xl
+FontAwesomeIcon("star", size: .x2)          // fa-2x
+FontAwesomeIcon("star", size: .x10)         // fa-10x
+```
+
+### Components
 
 ```swift
 // Button with icon
 FontAwesomeButton(icon: .download, "Download Report")
 
-// List with icons
-FontAwesomeList {
+// Button with trailing icon
+FontAwesomeButton(
+    icon: .arrowRight,
+    "Next",
+    iconPosition: .trailing
+)
+
+// Label with icon
+FontAwesomeLabel(icon: .user, "Profile")
+
+// List with icons (requires icon parameter to add fa-ul class)
+FontAwesomeList(icon: .check) {
     FontAwesomeListItem(icon: .check, "Task complete")
-    FontAwesomeListItem(icon: .clock, "In progress")
+    FontAwesomeListItem(icon: .times, "Task failed")
 }
 
 // Icon stacking
@@ -140,92 +153,67 @@ FontAwesomeStack {
 }
 ```
 
-### ♿ Accessibility
+### Accessibility
 
 ```swift
+// Add ARIA label
 FontAwesomeIcon.trash
     .ariaLabel("Delete item")
-    .title("Click to remove")
 
-// Hide decorative icons
+// Add title attribute
+FontAwesomeIcon.info
+    .title("More information")
+
+// Hide decorative icons from screen readers
 FontAwesomeIcon.star
     .ariaHidden()
+```
+
+### Fixed Width Icons
+
+```swift
+// Useful for aligning icons in lists or navigation
+FontAwesomeIcon.home.fixedWidth()      // fa-fw
+FontAwesomeIcon.search.fixedWidth()    // fa-fw
+FontAwesomeIcon.settings.fixedWidth()  // fa-fw
 ```
 
 ## Common Icons Reference
 
 The package includes 300+ pre-defined icons as static properties:
 
-- **Actions**: `.check`, `.times`, `.plus`, `.minus`, `.edit`, `.trash`
-- **Navigation**: `.home`, `.menu`, `.search`, `.settings`, `.user`
+- **Actions**: `.check`, `.times`, `.xmark`, `.plus`, `.minus`, `.edit`, `.trash`
+- **Navigation**: `.home`, `.house`, `.search`, `.settings`, `.gear`
+- **Communication**: `.envelope`, `.email`
+- **User**: `.user`, `.users`, `.circleUser`
 - **Media**: `.play`, `.pause`, `.camera`, `.video`, `.music`
 - **Social**: `.github`, `.twitter`, `.linkedin`, `.youtube`
-- **Arrows**: `.arrowUp`, `.arrowDown`, `.chevronLeft`, `.chevronRight`
+- **Arrows**: `.arrowUp`, `.arrowDown`, `.arrowLeft`, `.arrowRight`
 - **Files**: `.file`, `.folder`, `.download`, `.upload`
-- And many more...
+- **Calendar**: `.calendar`, `.calendarDay`, `.calendarWeek`
+- **Symbols**: `.heart`, `.star`, `.bolt`, `.shield`
 
-## Real-World Example
-
-```swift
-struct NavigationBar: HTML {
-    var body: some HTML {
-        nav {
-            a(href: "/") {
-                FontAwesomeIcon.home
-                    .fixedWidth()
-                span { "Home" }
-                    .marginLeft(.rem(0.5))
-            }
-            
-            a(href: "/search") {
-                FontAwesomeIcon.search
-                    .fixedWidth()
-                span { "Search" }
-                    .marginLeft(.rem(0.5))
-            }
-            
-            a(href: "/settings") {
-                FontAwesomeIcon.gear
-                    .fixedWidth()
-                span { "Settings" }
-                    .marginLeft(.rem(0.5))
-            }
-        }
-        .display(.flex)
-        .gap(.rem(2))
-    }
-}
-```
+See `Sources/HTMLFontAwesome/Icons/CommonIcons.swift` for the complete list.
 
 ## FontAwesome Pro Support
 
-This package fully supports FontAwesome Pro features:
+This package supports all FontAwesome Pro features:
 
 1. Create a Kit at [fontawesome.com](https://fontawesome.com)
 2. Use the Kit loader: `FontAwesomeKit(kitId: "your-kit-id")`
-3. Access all Pro icons and styles
+3. Access all Pro icons and styles (light, thin, duotone, sharp variants)
 
-## Migration from Emojis
+## Related Packages
 
-Easy replacement for emoji-based interfaces:
-
-```swift
-// Before
-span { "✅ Success" }
-
-// After  
-FontAwesomeLabel(icon: .check, "Success")
-    .color(.green)
-```
-
-## Documentation
-
-For complete documentation, see:
-- [FontAwesome Icon Gallery](https://fontawesome.com/icons)
-- [swift-html Documentation](https://github.com/coenttb/swift-html)
+- **[coenttb/swift-html](https://github.com/coenttb/swift-html)**: A Swift DSL for type-safe HTML
+- **[pointfreeco/swift-dependencies](https://github.com/pointfreeco/swift-dependencies)**: Dependency management system used throughout the swift-html ecosystem
 
 ## License
 
-Licensed under Apache License 2.0. See [LICENSE](LICENSE.md) for details.
+This package is licensed under the Apache License 2.0. See [LICENSE](LICENSE.md) for details.
 
-Note: This package is not affiliated with Font Awesome. Font Awesome is a registered trademark of Fonticons, Inc.
+**Note**: This package is not affiliated with Font Awesome. Font Awesome is a registered trademark of Fonticons, Inc.
+
+## Contributing
+
+Contributions are welcome. Please open an issue or pull request on [GitHub](https://github.com/coenttb/swift-html-fontawesome).
