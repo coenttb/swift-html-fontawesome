@@ -205,7 +205,9 @@ This package supports all FontAwesome Pro features:
 
 ## Related Packages
 
-- **[coenttb/swift-html](https://github.com/coenttb/swift-html)**: The Swift library for domain-accurate and type-safe HTML & CSS.
+### Dependencies
+
+- [swift-html](https://github.com/coenttb/swift-html): The Swift library for domain-accurate and type-safe HTML & CSS.
 
 ## License
 
