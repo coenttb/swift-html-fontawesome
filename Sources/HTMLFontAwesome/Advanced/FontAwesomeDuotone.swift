@@ -2,64 +2,64 @@ import Foundation
 import HTML
 
 public struct FontAwesomeDuotone: HTML {
-  let icon: String
-  let primaryColor: String?
-  let primaryOpacity: Double?
-  let secondaryColor: String?
-  let secondaryOpacity: Double?
-  let size: FontAwesomeSize?
+    let icon: String
+    let primaryColor: String?
+    let primaryOpacity: Double?
+    let secondaryColor: String?
+    let secondaryOpacity: Double?
+    let size: FontAwesomeSize?
 
-  public init(
-    _ icon: String,
-    primaryColor: String? = nil,
-    primaryOpacity: Double? = nil,
-    secondaryColor: String? = nil,
-    secondaryOpacity: Double? = 0.4,
-    size: FontAwesomeSize? = nil
-  ) {
-    self.icon = icon
-    self.primaryColor = primaryColor
-    self.primaryOpacity = primaryOpacity
-    self.secondaryColor = secondaryColor
-    self.secondaryOpacity = secondaryOpacity
-    self.size = size
-  }
-
-  public var body: some HTML {
-    i {
-      HTMLEmpty()
-    }
-    .attribute("class", classString)
-    .style(styleString)
-  }
-
-  private var classString: String {
-    var classes = ["fad", "fa-\(icon)"]
-    if let sizeClass = size?.className {
-      classes.append(sizeClass)
-    }
-    return classes.joined(separator: " ")
-  }
-
-  private var styleString: String {
-    var styles: [String] = []
-
-    if let primaryColor = primaryColor {
-      styles.append("--fa-primary-color: \(primaryColor)")
+    public init(
+        _ icon: String,
+        primaryColor: String? = nil,
+        primaryOpacity: Double? = nil,
+        secondaryColor: String? = nil,
+        secondaryOpacity: Double? = 0.4,
+        size: FontAwesomeSize? = nil
+    ) {
+        self.icon = icon
+        self.primaryColor = primaryColor
+        self.primaryOpacity = primaryOpacity
+        self.secondaryColor = secondaryColor
+        self.secondaryOpacity = secondaryOpacity
+        self.size = size
     }
 
-    if let primaryOpacity = primaryOpacity {
-      styles.append("--fa-primary-opacity: \(primaryOpacity)")
+    public var body: some HTML {
+        i {
+            HTMLEmpty()
+        }
+        .attribute("class", classString)
+        .style(styleString)
     }
 
-    if let secondaryColor = secondaryColor {
-      styles.append("--fa-secondary-color: \(secondaryColor)")
+    private var classString: String {
+        var classes = ["fad", "fa-\(icon)"]
+        if let sizeClass = size?.className {
+            classes.append(sizeClass)
+        }
+        return classes.joined(separator: " ")
     }
 
-    if let secondaryOpacity = secondaryOpacity {
-      styles.append("--fa-secondary-opacity: \(secondaryOpacity)")
-    }
+    private var styleString: String {
+        var styles: [String] = []
 
-    return styles.joined(separator: "; ")
-  }
+        if let primaryColor = primaryColor {
+            styles.append("--fa-primary-color: \(primaryColor)")
+        }
+
+        if let primaryOpacity = primaryOpacity {
+            styles.append("--fa-primary-opacity: \(primaryOpacity)")
+        }
+
+        if let secondaryColor = secondaryColor {
+            styles.append("--fa-secondary-color: \(secondaryColor)")
+        }
+
+        if let secondaryOpacity = secondaryOpacity {
+            styles.append("--fa-secondary-opacity: \(secondaryOpacity)")
+        }
+
+        return styles.joined(separator: "; ")
+    }
 }
