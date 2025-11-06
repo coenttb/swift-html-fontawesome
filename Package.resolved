@@ -1,5 +1,5 @@
 {
-  "originHash" : "ae327db02264f4938947fe99747165859323a812f86f48c49bb803912a5fc900",
+  "originHash" : "0d9e2948f2de2a8661a15f32a28f5d642b560d87230b251a445d88ae183abc71",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "0867cb15127d9db0fe54e53d5a47fb5438d84710",
         "version" : "2.0.0"
-      }
-    },
-    {
-      "identity" : "pointfree-html-translating",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/coenttb/pointfree-html-translating",
-      "state" : {
-        "revision" : "1173b27062be38a65eeef74a42812a5e8f58145c",
-        "version" : "0.0.1"
       }
     },
     {
@@ -105,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/coenttb/swift-html",
       "state" : {
-        "revision" : "9d1f05e70add1f9e19d856578a8a480ab2acdd7e",
-        "version" : "0.9.1"
+        "revision" : "72e487f4c3cffe5d9f8eb76302430c7b8e2ea5ea",
+        "version" : "0.11.1"
       }
     },
     {
@@ -179,15 +170,6 @@
       "state" : {
         "revision" : "f99ae8aa18f0cf0d53481901f88a0991dc3bd4a2",
         "version" : "601.0.1"
-      }
-    },
-    {
-      "identity" : "swift-translating",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/coenttb/swift-translating",
-      "state" : {
-        "revision" : "579ab6bbf7df46428335c618278cb7d9d3d4c897",
-        "version" : "0.3.0"
       }
     },
     {
