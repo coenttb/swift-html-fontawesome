@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/coenttb/swift-html-css-pointfree",
       "state" : {
-        "revision" : "925b36fa89e8247f7b01240905930886c46dd32f",
-        "version" : "0.0.1"
+        "revision" : "09a6815ce5c6ece9fd196863c5b6f6b3d052be03",
+        "version" : "0.0.2"
       }
     },
     {
